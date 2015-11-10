@@ -46,9 +46,9 @@ function(hal_comp_add_module _name)
     )
   set_target_properties(${_name} PROPERTIES PREFIX "") # Don't prepend 'lib'
   target_include_directories(${_name} PRIVATE
-    ${MACHINEKIT_SOURCE_DIR}/rtapi/rtapi/include
-    ${MACHINEKIT_SOURCE_DIR}/rtapi_math/include
-    ${MACHINEKIT_SOURCE_DIR}/hal/linuxcnchal/include
+    $<TARGET_PROPERTY:rtapi,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:rtapi_math,INTERFACE_INCLUDE_DIRECTORIES>
+    $<TARGET_PROPERTY:linuxcnchal,INTERFACE_INCLUDE_DIRECTORIES>
     )
 endfunction()
 
