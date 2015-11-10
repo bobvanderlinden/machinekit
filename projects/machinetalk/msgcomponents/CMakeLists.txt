@@ -1,0 +1,3 @@
+hal_comp_add_module(remote)
+hal_comp_add_module(ringread)
+hal_comp_add_module(ringwrite)

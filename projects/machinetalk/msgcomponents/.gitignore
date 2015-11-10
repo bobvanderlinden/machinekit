@@ -1,0 +1,4 @@
+# comp-generated sources
+/remote.c
+/ringread.c
+/ringwrite.c

@@ -24,6 +24,10 @@ include(FindPkgConfig)
 # From https://github.com/thewtex/cython-cmake-example:
 include(UseCython)
 
+# Set up HAL comp CMake rules
+include(UseHALComp)
+build_in_tree_comp()
+
 # External packages
 find_package(Boost COMPONENTS python REQUIRED)
 find_package(PythonLibs 2.7 REQUIRED)

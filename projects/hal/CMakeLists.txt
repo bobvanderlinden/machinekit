@@ -1,2 +1,5 @@
 add_subdirectory(linuxcnchal)
 add_subdirectory(cython/machinekit)
+add_subdirectory(utils)
+add_subdirectory(components)
+add_subdirectory(drivers)

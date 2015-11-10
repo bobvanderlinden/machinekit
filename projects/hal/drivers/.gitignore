@@ -1,3 +1,10 @@
-m5i20_HM5-4E.h
-pluto_servo_rbf.h
-pluto_step_rbf.h
+/m5i20_HM5-4E.h
+/pluto_servo_rbf.h
+/pluto_step_rbf.h
+# comp-generated sources
+/mesa_7i65.c
+/mesa_uart.c
+/pcl720.c
+/pluto_servo.c
+/pluto_step.c
+/serport.c

@@ -1,1 +1,14 @@
-conv_*.comp
+/conv_*.comp
+/conv_*.c
+/bldc.c
+/charge_pump.c
+/logic.c
+/message.c
+/rtfault.c
+/rtmon.c
+/sim_axis_hardware.c
+/sim_parport.c
+/sim_spindle.c
+/steptest.c
+/timedelta.c
+/xhc_hb04_util.c
