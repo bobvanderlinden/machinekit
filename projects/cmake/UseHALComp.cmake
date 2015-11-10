@@ -32,8 +32,8 @@
 
 # hal_comp_add_module _name [ dependency ... ]
 function(hal_comp_add_module _name)
-  set(comp_source "${_name}.comp")
-  set(comp_c "${_name}.c")
+  set(comp_source "${CMAKE_CURRENT_SOURCE_DIR}/${_name}.comp")
+  set(comp_c "${CMAKE_CURRENT_BINARY_DIR}/${_name}.c")
   add_custom_command(OUTPUT ${comp_c}
     COMMAND ${COMP_EXECUTABLE}
     ARGS --require-license -o ${comp_c} ${comp_source} ${ARGN}
@@ -89,23 +89,25 @@ endfunction()
 #
 # Put this ugliness, only needed for in-tree build, at the bottom
 function(build_in_tree_comp)
+  set(comp_py "${CMAKE_CURRENT_BINARY_DIR}/comp.py")
   set(python_path ${MACHINEKIT_SOURCE_DIR}/../lib/python)
   set(yapps_lib "${python_path}/yapps")
   set(python env PYTHONPATH=${python_path} ${PYTHON_EXECUTABLE})
   set(hal_utils_dir ${MACHINEKIT_SOURCE_DIR}/hal/utils)
 
-  add_custom_command(OUTPUT ${hal_utils_dir}/comp.py
-    COMMAND ${python} ${hal_utils_dir}/yapps ${hal_utils_dir}/comp.g
+  add_custom_command(OUTPUT ${comp_py}
+    COMMAND ${python} ${hal_utils_dir}/yapps ${hal_utils_dir}/comp.g ${comp_py}
     DEPENDS ${hal_utils_dir}/comp.g ${hal_utils_dir}/yapps
     DEPENDS ${yapps_lib}/__init__.py ${yapps_lib}/grammar.py
     DEPENDS ${yapps_lib}/parsetree.py ${yapps_lib}/runtime.py
-    COMMENT "Generating comp.py"
+    COMMENT "Generating ${comp_py}"
     )
+  add_custom_target(comppy DEPENDS ${comp_py})
 
   # Tell the hal_comp_add_module() function the wacky python command
   # line and the comp.py dep location
   set(COMP_EXECUTABLE env PYTHONPATH=${python_path}
-    ${PYTHON_EXECUTABLE} ${hal_utils_dir}/comp.py
+    ${PYTHON_EXECUTABLE} ${comp_py}
     PARENT_SCOPE)
-  set(COMP_DEPEND ${hal_utils_dir}/comp.py PARENT_SCOPE)
+  set(COMP_DEPEND comppy PARENT_SCOPE)
 endfunction()
