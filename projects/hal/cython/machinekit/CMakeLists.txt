@@ -1,8 +1,3 @@
-# UseCython requires pyx file directories to have INCLUDE_DIRECTORIES
-# set
-set_directory_properties(PROPERTIES
-  INCLUDE_DIRECTORIES "${MACHINEKIT_SOURCE_DIR}")
-
 #
 # hal.so cython module
 #
