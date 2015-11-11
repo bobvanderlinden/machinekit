@@ -90,29 +90,28 @@ license "GPL";
 author "Chris Morley";
 ;;
 
+/* private comparator function */
+int comp(double in0, double in1, double hyst) {
+    double tmp;
+    double halfhyst;
+    tmp = in1 - in0;
+    halfhyst = 0.5 * hyst;
+
+    if(tmp < -halfhyst) {
+    return false;
+    } else if(tmp > halfhyst){
+    return false;
+    } else {
+    return true;
+    }
+}
+
+/* private window comparator function */
+int wcomp (double in, double max_, double min_){
+    return !((in >= max_)|| (in <= min_));
+}
+
 FUNCTION(update) {
-
-    /* private comparator function */
-    int comp(double in0, double in1, double hyst) {
-        double tmp;
-        double halfhyst;
-        tmp = in1 - in0;
-        halfhyst = 0.5 * hyst;
-
-        if(tmp < -halfhyst) {
-	    return false;
-        } else if(tmp > halfhyst){
-	    return false;
-        } else {
-        return true;
-        }
-    }
-
-    /* private window comparator function */
-    int wcomp (double in, double max_, double min_){
-        return !((in >= max_)|| (in <= min_));
-    }
-
 /*set home switches */
 Xhomesw_out = comp(Xhomesw_pos,Xcurrent_pos,Xhomesw_hyst);
 Yhomesw_out = comp(Yhomesw_pos,Ycurrent_pos,Yhomesw_hyst);
