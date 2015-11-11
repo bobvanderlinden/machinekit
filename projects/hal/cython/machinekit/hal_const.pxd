@@ -1,12 +1,12 @@
 cdef extern from "hal.h":
-    ctypedef enum comp_type:
+    enum comp_type:
         TYPE_INVALID
         TYPE_RT
         TYPE_USER
         TYPE_REMOTE
         TYPE_HALLIB
 
-    ctypedef enum comp_state:
+    enum comp_state:
         COMP_INVALID
         COMP_INITIALIZING
         COMP_UNBOUND
@@ -41,7 +41,7 @@ cdef extern from "hal.h":
        FS_USERLAND
 
 cdef extern from "hal_group.h":
-    ctypedef enum report_phase:
+    enum report_phase:
         REPORT_BEGIN
         REPORT_SIGNAL
         REPORT_PIN
