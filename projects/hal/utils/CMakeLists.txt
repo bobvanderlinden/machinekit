@@ -19,3 +19,32 @@ add_custom_command(OUTPUT comp
 
 add_custom_target(comp_executable ALL DEPENDS comp)
 
+
+# TODO: Split files for halcmd from rest of utils.
+add_executable(halcmd
+  halcmd.c
+  halcmd_commands.c
+  halcmd_main.c
+  halcmd_completion.c
+  halcmd_rtapiapp.cc
+)
+target_include_directories(halcmd PUBLIC
+  include
+  $<TARGET_PROPERTY:linuxcncini,INTERFACE_INCLUDE_DIRECTORIES>
+  $<TARGET_PROPERTY:linuxcnchal,INTERFACE_INCLUDE_DIRECTORIES>
+  $<TARGET_PROPERTY:mtalk_proto,INTERFACE_INCLUDE_DIRECTORIES>
+  $<TARGET_PROPERTY:mtalk,INTERFACE_INCLUDE_DIRECTORIES>
+  $<TARGET_PROPERTY:rtapi_math,INTERFACE_INCLUDE_DIRECTORIES>
+  $<TARGET_PROPERTY:rtapi,INTERFACE_INCLUDE_DIRECTORIES>
+  ${Readline_INCLUDE_DIR}
+)
+target_link_libraries(halcmd
+  linuxcnc
+  linuxcncini
+  linuxcnchal
+  mtalk_proto
+  mtalk
+  rtapi_math
+  ${Readline_LIBRARY}
+)
+set_property(TARGET halcmd PROPERTY C_STANDARD 99)

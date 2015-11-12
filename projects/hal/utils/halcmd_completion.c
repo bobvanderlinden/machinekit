@@ -40,6 +40,7 @@
 #include "halcmd_completion.h"
 #include "config.h"
 #include "rtapi.h"		/* RTAPI realtime OS API */
+#include "rtapi_compat.h"
 #include "hal.h"		/* HAL public API decls */
 #include "hal_priv.h"	/* private HAL decls */
 #include "hal_ring.h"	        /* ringbuffer declarations */

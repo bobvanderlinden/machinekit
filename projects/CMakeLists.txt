@@ -96,6 +96,8 @@ add_definitions(-DRTAPI_FLAVOR_ID=1)
 add_definitions(-DRTAPI=${RTAPI})
 add_definitions(-DBUILD_SYS_USER_DSO)
 
+add_definitions(-DMACHINEKIT_INI=\"${EMC2_SYSTEM_CONFIG_DIR}/machinekit.ini\")
+
 add_definitions(-DEMC2_SYSTEM_CONFIG_DIR=\"${EMC2_SYSTEM_CONFIG_DIR}\")
 add_definitions(-DEMC2_SYSTEM_CONFIG_DIR=\"${EMC2_SYSTEM_CONFIG_DIR}\")
 add_definitions(-DEMC2_DEFAULT_NMLFILE=\"${EMC2_DEFAULT_NMLFILE}\")
