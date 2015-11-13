@@ -96,6 +96,37 @@ install(
 	TARGETS rtapi_app_posix
 	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
 
+add_executable(rtapi_msgd
+	src/rtapi_msgd.cc
+	src/rtapi_heap.c
+	src/rtapi_compat.c
+	)
+target_include_directories(rtapi_msgd
+  PUBLIC
+	include
+  PRIVATE
+	$<TARGET_PROPERTY:linuxcncshm,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:linuxcncini,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:mtalk,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:mtalk_proto,INTERFACE_INCLUDE_DIRECTORIES>
+	${CZMQ_INCLUDE_DIRS}
+	${UUID_INCLUDE_DIRS}
+	${LTTNG_UST_INCLUDE_DIRS}
+	)
+target_link_libraries(rtapi_msgd
+	linuxcncshm
+	linuxcncini
+	mtalk
+	mtalk_proto
+	${CZMQ_LIBRARY}
+	${UUID_LIBRARY}
+	${LTTNG_UST_LIBRARY}
+	)
+install(
+	TARGETS rtapi_msgd
+	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+
+
 add_executable(flavor
 	src/flavor.c
 	src/rtapi_compat.c)
