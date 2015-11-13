@@ -19,7 +19,7 @@ target_include_directories(mtalk
   $<TARGET_PROPERTY:inifile,INTERFACE_INCLUDE_DIRECTORIES>
   ${JANSSON_INCLUDE_DIRS}
   ${AVAHICLIENT_INCLUDE_DIRS}
-  ${ZMQ_INCLUDE_DIRS}
+  ${CZMQ_INCLUDE_DIRS}
   ${UUID_INCLUDE_DIRS}
 )
 target_link_libraries(mtalk
@@ -28,7 +28,7 @@ target_link_libraries(mtalk
 	inifile
 	${JANSSON_LIBRARIES}
 	${AVAHICLIENT_LIBRARIES}
-	${ZMQ_LIBRARIES}
+	${CZMQ_LIBRARIES}
 	${UUID_LIBRARIES}
 	)
 set_target_properties(mtalk PROPERTIES
