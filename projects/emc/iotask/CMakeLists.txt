@@ -32,7 +32,6 @@ target_include_directories(iov2 PUBLIC
 	$<TARGET_PROPERTY:linuxcncini,INTERFACE_INCLUDE_DIRECTORIES>
 )
 target_link_libraries(iov2
-	nml
 	rtapi_math
 	linuxcnc
 	motmod
