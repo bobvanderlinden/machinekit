@@ -111,7 +111,6 @@ target_include_directories(rtapi_msgd
 	$<TARGET_PROPERTY:mtalk_proto,INTERFACE_INCLUDE_DIRECTORIES>
 	${CZMQ_INCLUDE_DIRS}
 	${UUID_INCLUDE_DIRS}
-	${LTTNG_UST_INCLUDE_DIRS}
 	)
 target_link_libraries(rtapi_msgd
 	linuxcncshm
@@ -120,7 +119,6 @@ target_link_libraries(rtapi_msgd
 	mtalk_proto
 	${CZMQ_LIBRARY}
 	${UUID_LIBRARY}
-	${LTTNG_UST_LIBRARY}
 	)
 install(
 	TARGETS rtapi_msgd
