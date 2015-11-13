@@ -68,6 +68,34 @@ install(
 	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
 
 
+
+add_executable(rtapi_app_posix
+	src/rtapi_app.cc
+	src/rtapi_compat.c
+	src/rtapi_hexdump.c
+	src/rtapi_support.c
+	)
+target_include_directories(rtapi_app_posix
+  PUBLIC
+	include
+  PRIVATE
+	$<TARGET_PROPERTY:linuxcncini,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:linuxcncshm,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:mtalk,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:mtalk_proto,INTERFACE_INCLUDE_DIRECTORIES>
+	$<TARGET_PROPERTY:rtapi_math,INTERFACE_INCLUDE_DIRECTORIES>
+	)
+target_link_libraries(rtapi_app_posix
+	linuxcncini
+	linuxcncshm
+	mtalk
+	mtalk_proto
+	rtapi_math
+	)
+install(
+	TARGETS rtapi_app_posix
+	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+
 add_executable(flavor
 	src/flavor.c
 	src/rtapi_compat.c)
