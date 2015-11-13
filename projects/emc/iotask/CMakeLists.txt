@@ -16,6 +16,9 @@ target_link_libraries(io
 	linuxcncini
 )
 
+install(
+	TARGETS io
+	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
 
 add_executable(iov2
 	ioControl_v2.cc
@@ -37,3 +40,7 @@ target_link_libraries(iov2
 	nml
 	linuxcncini
 )
+
+install(
+	TARGETS iov2
+	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})

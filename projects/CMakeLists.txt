@@ -67,6 +67,8 @@ if (_GNU_SOURCE)
 endif()
 
 
+set(SYSCONFDIR "/etc/machinekit")
+set(CMAKE_INSTALL_SYSCONFDIR "${SYSCONFDIR}")
 
 set(RTAPI 1)
 set(EMC2_SYSTEM_CONFIG_DIR "${SYSCONFDIR}")
@@ -137,4 +139,5 @@ add_subdirectory(posemath)
 add_subdirectory(hal)
 add_subdirectory(emc)
 
-install(DIRECTORY ${MACHINEKIT_SOURCE_DIR}/../configs DESTINATION ${CMAKE_INSTALL_DATADIR})
+install(DIRECTORY ${MACHINEKIT_SOURCE_DIR}/../configs/ DESTINATION ${CMAKE_INSTALL_DATADIR}/linuxcnc/examples/sample-configs)
+install(FILES ${MACHINEKIT_SOURCE_DIR}/../configs/common/linuxcnc.nml DESTINATION ${CMAKE_INSTALL_DATADIR}/linuxcnc)

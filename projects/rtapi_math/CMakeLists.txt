@@ -53,3 +53,7 @@ set_target_properties(rtapi_math PROPERTIES COMPILE_DEFINITIONS
 	"_ISOC99_SOURCE"
 	"_SVID_SOURCE"
 )
+
+install(
+	TARGETS rtapi_math
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})

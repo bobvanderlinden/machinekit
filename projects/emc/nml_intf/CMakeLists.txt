@@ -21,3 +21,7 @@ target_include_directories(linuxcnc PUBLIC
 	$<TARGET_PROPERTY:rs274ngc,INTERFACE_INCLUDE_DIRECTORIES>
 	)
 target_link_libraries(linuxcnc posemath nml tp)
+
+install(
+	TARGETS linuxcnc
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})

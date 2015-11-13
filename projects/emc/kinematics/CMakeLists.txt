@@ -11,6 +11,10 @@ target_include_directories(lineardeltakins PUBLIC
 	)
 target_link_libraries(lineardeltakins linuxcnchal posemath rtapi_math ${Boost_LIBRARIES})
 
+install(
+	TARGETS lineardeltakins
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+
 
 add_library(cubic STATIC
 	src/cubic.c
@@ -22,6 +26,10 @@ target_include_directories(cubic PUBLIC
 	$<TARGET_PROPERTY:rtapi_math,INTERFACE_INCLUDE_DIRECTORIES>
 	${Boost_INCLUDE_DIR}
 	)
+
+install(
+	TARGETS cubic
+	ARCHIVE DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
 
 # add_executable(genserkins
 # 	src/genserkins.c

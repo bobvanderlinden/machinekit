@@ -15,3 +15,7 @@ target_include_directories(motmod PUBLIC
 	$<TARGET_PROPERTY:cubic,INTERFACE_INCLUDE_DIRECTORIES>
 	)
 target_link_libraries(motmod posemath linuxcnc cubic)
+
+install(
+	TARGETS motmod
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})

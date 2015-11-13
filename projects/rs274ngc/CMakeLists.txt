@@ -39,3 +39,7 @@ target_include_directories(rs274ngc PUBLIC
 	${Boost_INCLUDE_DIRS}
 	)
 target_link_libraries(rs274ngc rtapi_math linuxcnc pyplugin ${PYTHON_LIBRARIES} ${Boost_LIBRARIES})
+
+install(
+	TARGETS rs274ngc
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})

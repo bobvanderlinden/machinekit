@@ -23,3 +23,7 @@ target_include_directories(linuxcncshm PUBLIC
 	$<TARGET_PROPERTY:rtapi,INTERFACE_INCLUDE_DIRECTORIES>
 	)
 set_target_properties(linuxcncshm PROPERTIES COMPILE_DEFINITIONS "${MACHINEKIT_COMPILE_DEFINITIONS}")
+
+install(
+	TARGETS linuxcncshm
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})

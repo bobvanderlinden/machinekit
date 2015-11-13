@@ -63,6 +63,11 @@ set(rtapi_definitions
 set_target_properties(rtapi PROPERTIES COMPILE_DEFINITIONS "${rtapi_definitions}")
 target_link_libraries(rtapi inifile mtalk mtalk_proto linuxcnchal linuxcncshm)
 
+install(
+	TARGETS rtapi
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
+
+
 add_executable(flavor
 	src/flavor.c
 	src/rtapi_compat.c)
@@ -70,3 +75,7 @@ target_include_directories(flavor PRIVATE
 	include
 	$<TARGET_PROPERTY:inifile,INTERFACE_INCLUDE_DIRECTORIES>)
 target_link_libraries(flavor inifile)
+
+install(
+	TARGETS flavor
+	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})

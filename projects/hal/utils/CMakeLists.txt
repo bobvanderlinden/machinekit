@@ -48,3 +48,7 @@ target_link_libraries(halcmd
   ${Readline_LIBRARY}
 )
 set_property(TARGET halcmd PROPERTY C_STANDARD 99)
+
+install(
+  TARGETS halcmd
+  RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})

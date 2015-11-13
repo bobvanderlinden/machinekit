@@ -45,3 +45,6 @@ target_include_directories(nml PUBLIC
 target_link_libraries(nml linklist rtapi_math posemath)
 
 
+install(
+	TARGETS nml
+	LIBRARY DESTINATION ${CMAKE_INSTALL_FULL_LIBDIR})
