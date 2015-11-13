@@ -45,8 +45,8 @@ target_link_libraries(halcmd
   mtalk_proto
   mtalk
   rtapi_math
-  ${CZMQ_LIBRARY}
-  ${Readline_LIBRARY}
+  ${CZMQ_LIBRARIES}
+  ${Readline_LIBRARIES}
 )
 set_property(TARGET halcmd PROPERTY C_STANDARD 99)
 

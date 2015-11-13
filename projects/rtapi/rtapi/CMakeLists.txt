@@ -91,6 +91,8 @@ target_link_libraries(rtapi_app_posix
 	mtalk
 	mtalk_proto
 	rtapi_math
+	${CZMQ_LIBRARIES}
+	${UUID_LIBRARIES}
 	)
 install(
 	TARGETS rtapi_app_posix
@@ -117,8 +119,8 @@ target_link_libraries(rtapi_msgd
 	linuxcncini
 	mtalk
 	mtalk_proto
-	${CZMQ_LIBRARY}
-	${UUID_LIBRARY}
+	${CZMQ_LIBRARIES}
+	${UUID_LIBRARIES}
 	)
 install(
 	TARGETS rtapi_msgd
