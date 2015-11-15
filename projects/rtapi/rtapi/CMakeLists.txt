@@ -96,7 +96,7 @@ target_link_libraries(rtapi_app_posix
 	)
 install(
 	TARGETS rtapi_app_posix
-	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+	RUNTIME DESTINATION ${EMC2_LIBEXEC_DIR})
 
 add_executable(rtapi_msgd
 	src/rtapi_msgd.cc
@@ -124,7 +124,7 @@ target_link_libraries(rtapi_msgd
 	)
 install(
 	TARGETS rtapi_msgd
-	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+	RUNTIME DESTINATION ${EMC2_LIBEXEC_DIR})
 
 
 add_executable(flavor
@@ -137,4 +137,4 @@ target_link_libraries(flavor inifile)
 
 install(
 	TARGETS flavor
-	RUNTIME DESTINATION ${CMAKE_INSTALL_FULL_BINDIR})
+	RUNTIME DESTINATION ${EMC2_LIBEXEC_DIR})
