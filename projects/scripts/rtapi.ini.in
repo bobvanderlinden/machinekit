@@ -1,0 +1,38 @@
+# ${EMC2_SYSTEM_CONFIG_DIR}/rtapi.ini
+#
+# LinuxCNC RTAPI system configuration
+#
+# Most values here will never need to be changed.  Power users may
+# want to change DEBUG.
+
+[global]
+# Default DEBUG level, 0-5 for NONE, ERR, WARN, INFO, DBG, ALL
+DEBUG=1
+
+# shared memory kernel driver
+USE_SHMDRV=${USE_SHMDRV}
+
+# fixme make param
+HAL_SIZE=524288
+
+# Executables
+flavor=${EMC2_LIBEXEC_DIR}/flavor
+rtapi_msgd=${EMC2_LIBEXEC_DIR}/rtapi_msgd
+linuxcnc_module_helper=${EMC2_LIBEXEC_DIR}/linuxcnc_module_helper
+
+# directory paths
+EMC2_HOME=${EMC2_HOME}
+RTLIB_DIR=${EMC2_RTLIB_DIR}
+LIBEXEC_DIR=${EMC2_LIBEXEC_DIR}
+BIN_DIR=${EMC2_BIN_DIR}
+
+# build parameters
+USE_PORTABLE_PARPORT_IO=@USE_PORTABLE_PARPORT_IO@
+TARGET_PLATFORM=@TARGET_PLATFORM@
+ARCHITECTURE=@ARCHITECTURE@
+GIT_VERSION=@GIT_VERSION@
+RUN_IN_PLACE=@RUN_IN_PLACE@
+PIDOF=@PIDOF@
+
+[flavor_POSIX]
+rtapi_app=${RTAPI_APP}

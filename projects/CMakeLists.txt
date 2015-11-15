@@ -92,8 +92,15 @@ set(LINUXCNC_CONFIG_PATH "~/machinekit/configs:${sysconfdir}/linuxcnc/configs:${
 set(EMC2_NCFILES_DIR ${CMAKE_INSTALL_FULL_DATADIR}/linuxcnc/ncfiles)
 # set(REALTIME ${EMC2_BIN_DIR}/realtime)
 set(EMC2_IMAGE_DIR ${CMAKE_INSTALL_FULL_DATADIR}/linuxcnc)
+set(RTAPI_APP ${EMC2_LIBEXEC_DIR}/rtapi_app_posix)
 
+set(TARGET_PLATFORM pc)
+set(TARGET_PLATFORM_PC true)
+set(RUN_IN_PLACE false)
+set(USE_PORTABLE_PARPORT_IO no)
+set(USE_SHMDRV no)
 
+set(ARCHITECTURE ${CMAKE_SYSTEM_PROCESSOR})
 
 add_definitions(-DRTAPI_FLAVOR_ID=1)
 add_definitions(-DRTAPI=${RTAPI})
@@ -138,6 +145,7 @@ add_subdirectory(rtapi_math)
 add_subdirectory(posemath)
 add_subdirectory(hal)
 add_subdirectory(emc)
+add_subdirectory(scripts)
 
 install(DIRECTORY ${MACHINEKIT_SOURCE_DIR}/../configs/ DESTINATION ${CMAKE_INSTALL_DATADIR}/linuxcnc/examples/sample-configs)
 install(FILES ${MACHINEKIT_SOURCE_DIR}/../configs/common/linuxcnc.nml DESTINATION ${CMAKE_INSTALL_DATADIR}/linuxcnc)
