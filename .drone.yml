@@ -1,0 +1,15 @@
+build:
+  image: kinsamanka/mkdocker:wheezy-64
+  privileged: true
+  environment:
+    - TAG=wheezy-64
+    - CMD=run_tests
+    - CHROOT_PATH=/opt/rootfs
+    - MACHINEKIT_PATH=/usr/src/machinekit
+    - FLAV=""
+    - MK_DIR=wheezy-64_run_tests
+    - JOBS=2
+    - ROOT=/opt/rootfs
+  commands:
+    - /opt/rootfs/usr/src/machinekit/.travis/${CMD}.sh
+
