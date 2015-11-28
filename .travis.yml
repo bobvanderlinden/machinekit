@@ -5,12 +5,20 @@ language: bash
 services:
 - docker
 
+install:
+- sudo bash -ex ./.travis/setup_binfmt_misc.sh
+
 env:
   global:
     - ROOT=/opt/rootfs
     - JOBS=2
   matrix:
     - TAG=wheezy-64    CMD=run_tests
+    - TAG=wheezy-32    CMD=build_debs
+    - TAG=wheezy-64    CMD=build_debs
+    - TAG=wheezy-armhf CMD=build_debs FLAV=posix
+    - TAG=wheezy-armhf CMD=build_debs FLAV=rt_preempt
+    - TAG=wheezy-armhf CMD=build_debs FLAV=xenomai
 
 script:
 - .travis/docker_run.sh
