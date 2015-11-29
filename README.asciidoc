@@ -1,4 +1,4 @@
-image:https://travis-ci.org/machinekit/machinekit.svg?branch=master["Build Status", link="https://travis-ci.org/machinekit/machinekit"]
+image:https://travis-ci.org/machinekit/machinekit.svg?branch=master["Build Status", link="https://travis-ci.org/machinekit/machinekit"] image:https://img.shields.io/gitter/room/machinekit/machinekit.svg["Chat on gitter", link="https://gitter.im/machinekit/machinekit"]
 
 
 == DISCLAIMER
