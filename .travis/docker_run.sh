@@ -1,28 +1,17 @@
 #!/bin/bash -ex
 cd "$(dirname $0)/.."
 
-CHROOT_PATH="/opt/rootfs"
-MACHINEKIT_PATH="/usr/src/machinekit"
-TRAVIS_PATH="$MACHINEKIT_PATH/.travis"
 CONTAINER="kinsamanka/mkdocker"
-
-cmd=${CMD}
-if [ ${CMD} == "run_tests" ];
-then
-    cmd=build_rip
-fi
 
 # run build step
 docker run \
-    -v $(pwd):${CHROOT_PATH}${MACHINEKIT_PATH} \
+    -v $(pwd):$(pwd) \
     -e FLAV="${FLAV}" \
     -e JOBS=${JOBS} \
     -e TAG=${TAG} \
-    -e CHROOT_PATH=${CHROOT_PATH} \
-    -e MACHINEKIT_PATH=${MACHINEKIT_PATH} \
-    -e TRAVIS_PATH=${TRAVIS_PATH} \
+    -w $(pwd) \
     ${CONTAINER}:${TAG} \
-    ${CHROOT_PATH}${TRAVIS_PATH}/${cmd}.sh
+    $(pwd)/.travis/build_rip.sh
 
 # tests are run under a new container instead of chrooting
 # this will allow us to run docker without using privileged mode
@@ -33,6 +22,7 @@ then
     
     # run regressions
     docker run \
-        -e MACHINEKIT_PATH=${MACHINEKIT_PATH} \
-        --rm=true mk_runtest /run_tests.sh
+        -v $(pwd):$(pwd) \
+        -w $(pwd) \
+        --rm=true mk_runtest $(pwd)/.travis/run_tests.sh
 fi

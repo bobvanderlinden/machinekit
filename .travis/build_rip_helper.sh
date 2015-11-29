@@ -1,6 +1,6 @@
 #!/bin/sh -ex
 
-cd ${MACHINEKIT_PATH}/src
+cd src
 ./autogen.sh
 ./configure \
      --with-posix \
