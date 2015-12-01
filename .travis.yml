@@ -11,11 +11,21 @@ notifications:
     on_failure: always
     on_start: never
 
+deploy:
+  - provider: packagecloud
+    repository: "machinekit"
+    username: "bobvanderlinden"
+    dist: "debian/wheezy"
+    token:
+      secure: KHnDHMYSjdSogeofw5BgqXo2q8j0BAZsjXKXo6gSspl1Pj3Bjd5sQxDl8P6GnfvvhSYJ8LwQwGtCwnU7QUYCH8DZONpH7ZMp/Nv15yOqMpjQPUusYqDpbTv8PG40TRTEm+12cwil88EFXBMm2EtHBFy98icd73adftUoV5NeZVdHpTKsi1omqzNLCfmzIylbuuqn09B+UgN4tp3Atm0bLroIyOIMZ6fGXga++OF3ECD/7r/qw4sZARV57TJmzp5PFW1gclfjLpeKPYPCQRnETLc6wmeDsDgXO+UbXmmCWECiKLWYGnAbi2Zv9xUN7b41IE7wybCM8LeDAXWkWlcVWrAf/pJfgqvBKueyI7mt2Nwmm7OXk3KQYRMozP40tu5MnsgqyKmXWg83iGQs5RHTbysJgxH8Lt7JF1o0YMeUS22VsmAlDz1eedrV9tfJM6rpKLkBeIBBjd59Rxuli5xmju5Ruyq/77I0ODRby8+fNTP/MenktW88an1G4nIwWUmaoi850KTuxYBEeRxZBM9JoChOqUoEvimGNWK4a8aHp6Ts/zLOK69QhIYaZdLreOnvzyPrdZOSVbZ8XzJFTSPqLIFVUsPpIptzZ40KTc9OnSpKnR9NiPw0+grrpYo1TsEtgnFjPyl7sDPOPsqVY9LVVQjrUdY+xi2h7u2cJmACCzc=
 
 language: bash
 
 services:
 - docker
+
+before_install:
+  - gem install package_cloud
 
 env:
   global:
