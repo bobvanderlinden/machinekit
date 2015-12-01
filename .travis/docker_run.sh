@@ -35,4 +35,7 @@ then
     docker run \
         -e MACHINEKIT_PATH=${MACHINEKIT_PATH} \
         --rm=true mk_runtest /run_tests.sh
+elif [ ${CMD} == "build_dep" ]
+then
+    package_cloud push bobvanderlinden/machinekit/debian/wheezy .$MACHINEKIT_PATH/.travis/packages/*.deb
 fi

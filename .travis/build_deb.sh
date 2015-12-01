@@ -11,7 +11,10 @@ if echo ${TAG} | grep -iq arm; then
 fi
 
 # build debs
+mkdir -p ${CHROOT_PATH}${MACHINEKIT_PATH}/.travis/packages/
 export DEBUILD_OPTS
 proot ${PROOT_OPTS} /bin/sh -exc 'cd ${MACHINEKIT_PATH}; \
     ./debian/configure -prx ; \
-    debuild ${DEBUILD_OPTS}'
+    debuild ${DEBUILD_OPTS}; \
+    mv ../*.deb ${MACHINEKIT_PATH}/.travis/packages/'
+
